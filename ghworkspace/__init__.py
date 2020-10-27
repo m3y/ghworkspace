@@ -7,7 +7,7 @@ from functools import wraps
 
 from github import Github, GithubException
 
-DEFAULT_WORK_BRANCH = "default_workspace"
+DEFAULT_WORK_BRANCH = "ghworkspace"
 DEFAULT_BASE_BRANCH = "master"
 
 
@@ -78,7 +78,7 @@ def workspace(func):
         if not work_branch:
             work_branch = args[3] if len(args) > 3 else None
             if not work_branch:
-                raise InputParameterError("Missing `work_branch` parameter.")
+                work_branch = DEFAULT_WORK_BRANCH
 
         base_branch = kwargs["base_branch"] if "base_branch" in kwargs else DEFAULT_BASE_BRANCH
 
