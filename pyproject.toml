@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ghworkspace"
-version = "0.0.2"
+version = "0.0.3"
 description = ""
 authors = ["m3y <ma3ya.ozw+pypi@gmail.com>"]
 
