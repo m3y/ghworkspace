@@ -23,7 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry --upgrade-strategy=only-if-needed
-        poetry install --dev
+        poetry install
 
     - name: Run lint
       run: |
@@ -46,7 +46,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry --upgrade-strategy=only-if-needed
-        poetry install --dev
+        poetry install
 
     - name: Run tests
       run: |
