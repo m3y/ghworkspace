@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+    - 'main'
+
+jobs:
+  fmt:
+    name: lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        architecture: x64
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry --upgrade-strategy=only-if-needed
+        poetry install
+
+    - name: Run lint
+      run: |
+        make check_isort && make check_format && make lint
+
+  tests:
+    name: pytest
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        architecture: x64
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry --upgrade-strategy=only-if-needed
+        poetry install
+
+    - name: Run tests
+      run: |
+        make test

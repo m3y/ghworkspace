@@ -1,6 +1,12 @@
 list:
 	@poetry run pip list
 
+check_format:
+	@poetry run black --check .
+
+check_isort:
+	@poetry run isort -c .
+
 fmt:
 	@poetry run sh -c "isort . ; black ."
 
@@ -25,4 +31,4 @@ test-publish:
 clean:
 	@rm -rf dist
 
-.PHONY: build clean fmt lint list publish repl test test-publish
+.PHONY: build check_format check_isort clean fmt lint list publish repl test test-publish
